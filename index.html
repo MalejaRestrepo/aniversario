@@ -104,7 +104,18 @@
       z-index: 10;
       overflow-y: auto;
       max-height: 75vh;
+
+      /* Animación inicial */
+      opacity: 0;
+      transform: scale(0.7);
+      transition: transform 0.7s ease, opacity 0.7s ease;
     }
+    .card.show {
+      display: block;
+      opacity: 1;
+      transform: scale(1);
+    }
+
     .card h1 {
       font-family: 'Dancing Script', cursive;
       font-size: 2em;
@@ -205,10 +216,14 @@ Gracias por ser mi pareja, mi cómplice, mi mejor amigo, mi refugio y mi mayor a
     const card = document.getElementById("card");
     const toggleBtn = document.getElementById("toggleBtn");
 
-    // Mostrar carta
+    // Mostrar carta con animación
     heart.addEventListener("click", () => {
       heart.style.display = "none";
       card.style.display = "block";
+
+      setTimeout(() => {
+        card.classList.add("show");
+      }, 50);
     });
 
     // Expandir/minimizar carta en móvil
@@ -235,10 +250,9 @@ Gracias por ser mi pareja, mi cómplice, mi mejor amigo, mi refugio y mi mayor a
     ];
     let posIndex = 0;
 
-    // función que ajusta velocidad según tamaño de pantalla
     function getInterval() {
-      if (window.innerWidth <= 599) return 2000; // celular más rápido
-      return 3000; // tablet y pc normal
+      if (window.innerWidth <= 599) return 2000;
+      return 3000;
     }
 
     function createPhoto() {
@@ -265,7 +279,6 @@ Gracias por ser mi pareja, mi cómplice, mi mejor amigo, mi refugio y mi mayor a
       posIndex = (posIndex + 1) % positions.length;
     }
 
-    // inicializar fotos con intervalo dinámico
     let photoInterval = setInterval(createPhoto, getInterval());
     window.addEventListener("resize", () => {
       clearInterval(photoInterval);
@@ -287,4 +300,3 @@ Gracias por ser mi pareja, mi cómplice, mi mejor amigo, mi refugio y mi mayor a
   </script>
 </body>
 </html>
-
