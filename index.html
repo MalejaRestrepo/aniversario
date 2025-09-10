@@ -64,15 +64,15 @@
       position: absolute;
       border-radius: 15px;
       opacity: 0;
-      animation: fadePhoto 6s ease forwards;
+      animation: fadePhoto 6s ease-in-out forwards;
       z-index: 2;
       transform: rotate(var(--angle));
     }
     @keyframes fadePhoto {
       0% { opacity: 0; }
-      15% { opacity: 1; }
-      85% { opacity: 1; }
-      100% { opacity: 0; }
+      20% { opacity: 1; }   /* aparece suavemente */
+      80% { opacity: 1; }   /* se mantiene visible */
+      100% { opacity: 0; }  /* desaparece suavemente */
     }
 
     /* corazón central */
@@ -168,15 +168,15 @@
 
     /* responsive */
     @media (min-width: 1024px) { 
-      .photo { width: 290px; } /* PC */
+      .photo { width: 320px; } /* PC */
     }
 
     @media (max-width: 1023px) and (min-width: 600px) { 
-      .photo { width: 190px; } /* Tablet */
+      .photo { width: 220px; } /* Tablet */
     }
 
     @media (max-width: 599px) {
-      .photo { width: 160px; } /* Móvil */
+      .photo { width: 180px; } /* Móvil */
 
       .container {
         min-height: 100vh;
