@@ -167,10 +167,24 @@
     }
 
     /* responsive */
-    @media (min-width: 1024px) { .photo { width: 260px; } }
-    @media (max-width: 1023px) and (min-width: 600px) { .photo { width: 180px; } }
+    @media (min-width: 1024px) { 
+      .photo { width: 290px; } /* PC */
+    }
+
+    @media (max-width: 1023px) and (min-width: 600px) { 
+      .photo { width: 190px; } /* Tablet */
+    }
+
     @media (max-width: 599px) {
-      .photo { width: 120px; }
+      .photo { width: 160px; } /* Móvil */
+
+      .container {
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px 0 90px; /* espacio para reproductor */
+      }
 
       .card {
         width: 90%;
@@ -184,20 +198,16 @@
         box-shadow: 0 4px 16px rgba(0,0,0,0.15);
       }
 
-      /* contenido ahora se anima con opacity + translate */
+      .card.expanded {
+        max-height: calc(100vh - 160px); /* carta abierta sin chocar con audio */
+        overflow-y: auto;
+        padding: 20px;
+      }
+
       .card .card-content {
         opacity: 0;
         transform: translateY(-10px);
         transition: opacity 0.4s ease, transform 0.4s ease;
-      }
-
-      .card.expanded {
-        width: 90%;
-        max-width: 90%;
-        margin: 0 auto;
-        max-height: 65vh;   /* carta abierta */
-        overflow-y: auto;
-        padding: 20px;
       }
 
       .card.expanded .card-content {
